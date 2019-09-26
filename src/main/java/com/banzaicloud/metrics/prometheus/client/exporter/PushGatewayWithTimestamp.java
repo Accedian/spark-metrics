@@ -258,7 +258,7 @@ public class PushGatewayWithTimestamp {
             }
 
             int response = connection.getResponseCode();
-            if (response != HttpURLConnection.HTTP_ACCEPTED) {
+            if (response != HttpURLConnection.HTTP_ACCEPTED && response != HttpURLConnection.HTTP_OK) {
                 throw new IOException("Response code from " + url + " was " + response);
             }
         } catch (Exception ex) {
