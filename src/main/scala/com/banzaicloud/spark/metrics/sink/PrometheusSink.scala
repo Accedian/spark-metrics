@@ -26,7 +26,7 @@ import com.codahale.metrics._
 import io.prometheus.client.{Collector, CollectorRegistry}
 import org.apache.spark.internal.Logging
 import org.apache.spark.metrics.sink.Sink
-import org.apache.spark.{SecurityManager, SparkConf, SparkEnv}
+import org.apache.spark.{SparkConf, SparkEnv}
 
 import scala.collection.JavaConverters._
 import scala.util.Try
@@ -34,8 +34,7 @@ import scala.util.Try
 
 class PrometheusSink(
                       val property: Properties,
-                      val registry: MetricRegistry,
-                      securityMgr: SecurityManager)
+                      val registry: MetricRegistry)
   extends Sink with Logging {
 
   protected class PrometheusJobConfig {
