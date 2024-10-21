@@ -12,7 +12,7 @@ lazy val root = (project in file("."))
       "io.prometheus" % "simpleclient_pushgateway" % "0.16.0",
       "io.dropwizard.metrics" % "metrics-core" % "4.2.28",
       "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
-      "org.slf4j" % "slf4j-api" % "2.0.16",
+      "org.slf4j" % "slf4j-api" % "1.7.36",
       "com.google.guava" % "guava" % "14.0.1",
       "com.novocode" % "junit-interface" % "0.11" % Test
     )
