@@ -180,9 +180,8 @@ class SparkMetricExports(
   }
 
 
-  def getHelpMessage(metricName: String, metric: Metric): String = {
-    return String.format("Generated from SparkMetricsExports metric import (metric=%s, type=%s)",
-      metricName, metric.getClass().getName());
+def getHelpMessage(metricName: String, metric: Metric): String = {
+   return "Spark metrics exported via SparkMetricsExports"
   }
 
 
