@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.banzaicloud.spark.metrics.sink
+package org.apache.spark.metrics.sink
 
 import java.util.concurrent.TimeUnit
 import java.util.regex.Pattern
@@ -68,12 +68,12 @@ class SparkMetricExports(
 
     val mfSamples = new ArrayList[MetricFamilySamples]
 
-    import scala.collection.JavaConversions._
-    registry.getGauges.foreach(kv => mfSamples.add(fromGauge(kv._1, kv._2)))
-    registry.getCounters.foreach(kv => mfSamples.add(fromCounter(kv._1, kv._2)))
-    registry.getHistograms.foreach(kv => mfSamples.add(fromHistogram(kv._1, kv._2)))
-    registry.getTimers.foreach(kv => mfSamples.add(fromTimer(kv._1, kv._2)))
-    registry.getMeters.foreach(kv => mfSamples.add(fromMeter(kv._1, kv._2)))
+    import scala.jdk.CollectionConverters._
+    registry.getGauges.asScala.foreach(kv => mfSamples.add(fromGauge(kv._1, kv._2)))
+    registry.getCounters.asScala.foreach(kv => mfSamples.add(fromCounter(kv._1, kv._2)))
+    registry.getHistograms.asScala.foreach(kv => mfSamples.add(fromHistogram(kv._1, kv._2)))
+    registry.getTimers.asScala.foreach(kv => mfSamples.add(fromTimer(kv._1, kv._2)))
+    registry.getMeters.asScala.foreach(kv => mfSamples.add(fromMeter(kv._1, kv._2)))
     mfSamples
   }
 

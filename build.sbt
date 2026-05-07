@@ -1,11 +1,11 @@
-val sparkVersion = "3.5.3"
+val sparkVersion = "4.1.1"
 
 lazy val root = (project in file("."))
   .settings(
     name := "spark-metrics",
     organization := "com.banzaicloud",
-    scalaVersion := "2.12.20",
-    version := "3.5.3-1.0.1",
+    scalaVersion := "2.13.16",
+    version := "4.1.1-1.0.1",
     libraryDependencies ++= Seq(
       "io.prometheus" % "simpleclient" % "0.16.0",
       "io.prometheus" % "simpleclient_dropwizard" % "0.16.0",
