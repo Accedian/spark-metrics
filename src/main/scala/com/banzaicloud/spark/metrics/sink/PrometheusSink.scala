@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.banzaicloud.spark.metrics.sink
+package org.apache.spark.metrics.sink
 
 import java.net.URI
 import java.util
@@ -25,10 +25,9 @@ import com.banzaicloud.metrics.prometheus.client.exporter.PushGatewayWithTimesta
 import com.codahale.metrics._
 import io.prometheus.client.{Collector, CollectorRegistry}
 import org.apache.spark.internal.Logging
-import org.apache.spark.metrics.sink.Sink
 import org.apache.spark.{SparkConf, SparkEnv}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.util.Try
 
 
@@ -165,7 +164,7 @@ class PrometheusSink(
     reporter.report()
   }
 
-  private def checkMinimalPollingPeriod(pollUnit: TimeUnit, pollPeriod: Int) {
+  private def checkMinimalPollingPeriod(pollUnit: TimeUnit, pollPeriod: Int): Unit = {
     val period = TimeUnit.SECONDS.convert(pollPeriod, pollUnit)
     if (period < 1) {
       throw new IllegalArgumentException("Polling period " + pollPeriod + " " + pollUnit +
